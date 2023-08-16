@@ -1,4 +1,4 @@
-// declare Car class
+// declare the Car class
 class Car{
     constructor(x,y,width,height){
         this.x=x;
@@ -6,7 +6,7 @@ class Car{
         this.width=width;
         this.height=height;
 
-        this.controls=new this.controls();
+        this.controls=new this.Controls();
     }
 
     // declare the draw method
