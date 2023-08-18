@@ -15,6 +15,10 @@ class Car{
     }
 
     update(){
+        this.#move();
+    }
+
+    #move(){
         if(this.controls.forward){
             this.speed+=this.acceleration; // move car forward
         }
@@ -41,14 +45,17 @@ class Car{
                             stop the car - without this the car may keep moving a tiny amount */ 
         }
 
-        if(this.controls.left){
-            this.angle+=0.03; // move the car left
-        }
-
-        if(this.controls.right){
-            this.angle-=0.03; // move the car right
-        }
-
+        if(this.speed!=0){
+            const flip=this.speed>0?1:-1; // check if the car is moving forward or reverse
+                if(this.controls.left){  
+                    this.angle+=0.03*flip; // move the car left - flip controls in reverse
+                }
+                if(this.controls.right){
+                    this.angle-=0.03*flip; // move the car right - flip controls in reverse
+                }
+       
+            }
+        
         this.x-=Math.sin(this.angle)*this.speed; // rotate the car left or right (sin/cos of angle)
         this.y-=Math.cos(this.angle)*this.speed; // based on the speed of the car
     }
@@ -61,8 +68,8 @@ class Car{
 
         ctx.beginPath();
         ctx.rect(
-            this.x-this.width/2,
-            this.y-this.height/2,
+            -this.width/2,
+            -this.height/2,
             this.width,
             this.height
         );

@@ -5,7 +5,10 @@ canvas.width=200;
 // set 2d context
 const ctx = canvas.getContext("2d");
 
-// construct and draw the car
+// instantiate the road class
+const road=new Road(canvas.width/2,canvas.width*0.9);
+
+// instantiate the car class and call the draw method
 const car = new Car(100,100,30,50);
 car.draw(ctx);
 
@@ -15,6 +18,7 @@ animate();
 function animate(){
     car.update();
     canvas.height=window.innerHeight;
+    road.draw(ctx);
     car.draw(ctx);
     requestAnimationFrame(animate); /* calls animate many times per second -
                                         giving the illusion of movement */
