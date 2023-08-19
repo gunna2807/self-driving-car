@@ -1,12 +1,11 @@
-// declare the Controls class
 class Controls{
     constructor(){
-      this.forward=false;
-      this.left=false;
-      this.right=false;
-      this.reverse=false;
-      
-      this.#addKeyboardListeners();
+        this.forward=false;
+        this.left=false;
+        this.right=false;
+        this.reverse=false;
+
+        this.#addKeyboardListeners();
     }
 
     #addKeyboardListeners(){
@@ -25,9 +24,7 @@ class Controls{
                     this.reverse=true;
                     break;
             }
-            //console.table(this); check if the code is working
         }
-    
         document.onkeyup=(event)=>{
             switch(event.key){
                 case "ArrowLeft":
@@ -43,8 +40,6 @@ class Controls{
                     this.reverse=false;
                     break;
             }
-            //console.table(this); check if the code is working
         }
-
     }
 }
